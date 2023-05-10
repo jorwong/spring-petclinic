@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                git branch 'main',
+                    credentialsId: 'SpringBot_CICD',
+                    url: 'https://github.com/jorwong/spring-petclinic.git'
+                sh "ls -lrt"
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
